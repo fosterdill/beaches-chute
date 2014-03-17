@@ -14,7 +14,7 @@ Beaches.Views.Footer = Backbone.View.extend({
     if (!Beaches.album.hasMorePhotos()) {
       this.$el.fadeOut(300, this.showNoMorePhotos.bind(this));
     } else {
-      this.album.getMorePhotos();
+      Beaches.album.getMorePhotos();
     }
   },
 
