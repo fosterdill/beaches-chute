@@ -11,21 +11,24 @@
     <script src="js/app/routers/router.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app/models/asset.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app/views/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/views/footer.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app/collections/album.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="css/styles.css" title="" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Lusitana' rel='stylesheet' type='text/css'>
-
 
     <title>Beaches</title>
     
   </head>
   <body>
-  <h1> beaches </h1>
+    <h1> beaches </h1>
     <div id="content">
+    </div>
+    <div id="footer">
     </div>
     <script id="photo" type="text/x-handlebars-template">
       <div class="photo">
         <img src="{{source}}" >
+        <p class="caption">{{caption}}</p>
       </div>
     </script>
   </body>

@@ -3,8 +3,9 @@ Beaches.Routers.Router = Backbone.Router.extend({
     '': 'index'
   },
 
-  initialize: function ($rootEl) {
+  initialize: function ($rootEl, $footerEl) {
     this.$rootEl = $rootEl;
+    this.$footerEl = $footerEl;
   },
 
   index: function () {
@@ -13,7 +14,9 @@ Beaches.Routers.Router = Backbone.Router.extend({
       data: Beaches.fetchParams,
       success: function () {
         var indexView = new Beaches.Views.Index();
+        var footerView = new Beaches.Views.Footer();
         that._swapView(indexView, indexView.initializeMasonry);
+        that.$footerEl.html(footerView.render().$el);
       }
     });
   },
@@ -24,8 +27,8 @@ Beaches.Routers.Router = Backbone.Router.extend({
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
     
-    //necessary to call method on view after masonry el rendered to
-    //DOM, masonry#appended won't work unless already on DOM, need
+    //necessary to call method on view after masonry container rendered 
+    //to DOM, masonry#appended won't work unless already on DOM, need
     //to pass callback written in view
     if (callback) callback.call(view);
   }

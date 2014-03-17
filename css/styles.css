@@ -1,29 +1,72 @@
 body {
-  margin: 0px auto;
-  width: 1000px;
-  background-image: url('../images/ricepaper_v3.png');
-  background-repeat: repeat;
+  background: #f4f4e6;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 50px;
+  font-family: 'Lusitana';
 }
+
+
+#footer {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 20pt;
+}
+
+a {
+  color: #785e11;
+  text-decoration: none;
+}
+
 .photo {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+}
+
+#content {
+  margin: 0px auto;
+  width: 400px;
+  padding-bottom: 30px;
+}
+
+@media screen and ( min-width: 800px ) {
+  #content {
+    width: 800px;
+  }
+}
+
+@media screen and ( min-width: 1200px ) {
+  #content {
+    width: 1201px;
+  }
 }
 
 .photo > img {
   border-radius: 5px;
-  border: 5px solid #ffe8ab;
   box-shadow: 0px 0px 5px grey;
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   margin: 45px;
+  margin-bottom: 0px;
 }
 
 h1 {
   text-align: center;
-  color: #91cfe8;
-  font-size: 40pt;
-  font-family: 'Lusitana';
+  margin-left: -10px;
+  background-image: url('../images/ricepaper_v3.png');
+  background-repeat: repeat;
+  color: #41a5c1;
+  font-size: 50pt;
+  border-bottom: solid 1px #40320b;
+  text-shadow: 0px 0px 1px black;
   letter-spacing: 8px;
-  text-shadow: 0px 0px 4px black;
   margin-bottom: 0px;
+  padding-top: 30px;
+  margin-top: 0px;
+}
+
+.caption {
+  color: #493000;
+  margin: 45px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }

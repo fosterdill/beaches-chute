@@ -8,5 +8,22 @@ Beaches.Collections.Album = Backbone.Collection.extend({
   parse: function (response) {
     this.nextUrl = response.pagination.next_page;
     return response.data;
+  },
+
+  getMorePhotos: function (params) {
+    if (this.hasMorePhotos()) {
+      this.fetch({ 
+        data: params,
+        remove: false
+      });
+    }
+  },
+
+  hasMorePhotos: function () {
+    if (this.nextUrl != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 });

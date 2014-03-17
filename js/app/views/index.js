@@ -6,7 +6,7 @@ Beaches.Views.Index = Backbone.View.extend({
     var source = $('#photo').html();
     this.template = Handlebars.compile(source);
     this.masonryOptions = {
-      columnWidth: 500,
+      columnWidth: 400,
       itemSelector: '.photo'
     };
 
@@ -19,6 +19,7 @@ Beaches.Views.Index = Backbone.View.extend({
       { trailing: false }
     );
 
+    //add newly loaded photos to masonry container
     this.listenTo(Beaches.album, 'add', this.addPhotoWithMasonry);
   },
 
@@ -28,16 +29,12 @@ Beaches.Views.Index = Backbone.View.extend({
   },
 
   fetchAssets: function () {
-    Beaches.album.fetch({
-      data: Beaches.fetchParams,
-      remove: false
-    });
+    Beaches.album.getMorePhotos(Beaches.fetchParams);
   },
 
   scrollHandler: function (event) {
     var scrollPos = $(window).scrollTop();
     var scrollMax = $(document).height() - $(window).height();
-    var that = this;
     if (scrollMax - scrollPos < 50) {
       this.throttledFetch();
     } 
@@ -60,7 +57,8 @@ Beaches.Views.Index = Backbone.View.extend({
 
   renderTemplate: function (photo) {
     return this.template({ 
-      source: photo.get('source').source_url
+      source: photo.get('source').source_url,
+      caption: photo.get('caption')
     });
   },
 
