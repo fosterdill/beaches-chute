@@ -4,6 +4,10 @@ window.Beaches = {
   Collections: {},
   Routers: {},
   initialize: function ($rootEl) {
+    Beaches.album = new Beaches.Collections.Album();
+    Beaches.params = {
+      per_page: 4
+    };
     new Beaches.Routers.Router($rootEl);
     Backbone.history.start();
   }

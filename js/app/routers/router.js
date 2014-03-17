@@ -8,6 +8,14 @@ Beaches.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
+    var that = this;
+    Beaches.album.fetch({
+      data: Beaches.params,
+      success: function () {
+        var indexView = new Beaches.Views.Index();
+        that._swapView(indexView);
+      }
+    });
   },
 
   _swapView: function (view) {
