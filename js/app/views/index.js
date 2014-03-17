@@ -15,7 +15,7 @@ Beaches.Views.Index = Backbone.View.extend({
     $(window).scroll(this.scrollHandler);
     this.throttledFetch = _.throttle(
       this.fetchAssets, 
-      2000, 
+      1000, 
       { trailing: false }
     );
 
@@ -38,7 +38,7 @@ Beaches.Views.Index = Backbone.View.extend({
     var scrollPos = $(window).scrollTop();
     var scrollMax = $(document).height() - $(window).height();
     var that = this;
-    if (scrollMax - scrollPos < 200) {
+    if (scrollMax - scrollPos < 50) {
       this.throttledFetch();
     } 
   },
