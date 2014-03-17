@@ -6,7 +6,7 @@ Beaches.Views.Index = Backbone.View.extend({
     var source = $('#photo').html();
     this.template = Handlebars.compile(source);
     this.masonryOptions = {
-      columnWidth: 200,
+      columnWidth: 500,
       itemSelector: '.photo'
     };
 
@@ -38,7 +38,7 @@ Beaches.Views.Index = Backbone.View.extend({
     var scrollPos = $(window).scrollTop();
     var scrollMax = $(document).height() - $(window).height();
     var that = this;
-    if (scrollMax - scrollPos < 400) {
+    if (scrollMax - scrollPos < 200) {
       this.throttledFetch();
     } 
   },
@@ -60,7 +60,7 @@ Beaches.Views.Index = Backbone.View.extend({
 
   renderTemplate: function (photo) {
     return this.template({ 
-      thumbnail: photo.get('thumbnail') 
+      source: photo.get('source').source_url
     });
   },
 
