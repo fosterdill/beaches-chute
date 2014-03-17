@@ -1,17 +1,46 @@
 Beaches.Views.Index = Backbone.View.extend({
   initialize: function () {
+    
+    //compile handlebars template once
+    //and store masonry options
     var source = $('#photo').html();
     this.template = Handlebars.compile(source);
     this.masonryOptions = {
       columnWidth: 200,
       itemSelector: '.photo'
     };
+
+    //set up scroll handler listener
+    _.bindAll(this, 'scrollHandler');
+    $(window).scroll(this.scrollHandler);
+    this.throttledFetch = _.throttle(
+      this.fetchAssets, 
+      2000, 
+      { trailing: false }
+    );
+
     this.listenTo(Beaches.album, 'add', this.addPhotoWithMasonry);
   },
 
   render: function () {
     Beaches.album.each( this.addPhoto.bind(this) );
     return this;
+  },
+
+  fetchAssets: function () {
+    Beaches.album.fetch({
+      data: Beaches.fetchParams,
+      remove: false
+    });
+  },
+
+  scrollHandler: function (event) {
+    var scrollPos = $(window).scrollTop();
+    var scrollMax = $(document).height() - $(window).height();
+    var that = this;
+    if (scrollMax - scrollPos < 400) {
+      this.throttledFetch();
+    } 
   },
 
   //appends to DOM and calls masonry's appended method

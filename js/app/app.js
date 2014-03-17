@@ -5,7 +5,7 @@ window.Beaches = {
   Routers: {},
   initialize: function ($rootEl) {
     Beaches.album = new Beaches.Collections.Album();
-    Beaches.params = {
+    Beaches.fetchParams = {
       per_page: 4
     };
     new Beaches.Routers.Router($rootEl);
