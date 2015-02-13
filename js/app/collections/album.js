@@ -2,7 +2,7 @@ Beaches.Collections.Album = Backbone.Collection.extend({
   model: Beaches.Models.Asset,
 
   url: function () {
-    return this.nextUrl || "https://api.getchute.com/v2/albums/asYLgnzd/assets";
+    return this.nextUrl || "https://api.getchute.com/v2/albums/azo8vusq/assets";
   },
 
   parse: function (response) {
@@ -12,7 +12,7 @@ Beaches.Collections.Album = Backbone.Collection.extend({
 
   getMorePhotos: function (params) {
     if (this.hasMorePhotos()) {
-      this.fetch({ 
+      this.fetch({
         data: params,
         remove: false
       });
